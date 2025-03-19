@@ -2,7 +2,30 @@
 import cv2
 
 
+
+class LPF:
+    def __init__(self, alpha):
+        self.alpha = alpha
+        self.value = 0
+
+    def update(self, new_value):
+        self.value = self.alpha * new_value + (1 - self.alpha) * self.value
+        return self.value
+
+
+class LPF2D:
+    def __init__(self, alpha):
+        self.filter_x = LPF(alpha)
+        self.filter_y = LPF(alpha)
+
+    def update(self, loc):
+        x, y = loc
+        return self.filter_x.update(x), self.filter_y.update(y)
+
+
 def draw_temperature_marker(show_image, x, y, temperature, scale):
+    x = int(x)
+    y = int(y)
     sx = x * scale
     sy = y * scale
     center_temp = temperature[y, x]

@@ -3,10 +3,13 @@ import cv2
 import numpy as np
 import datetime
 from infiray_show.camera import infiray_camera_source
-from infiray_show.marker import draw_temperature_marker
-
+from infiray_show.marker import draw_temperature_marker, LPF2D
 
 def main():
+
+    filter_max_pos = LPF2D(0.3)
+    filter_min_pos = LPF2D(0.3)
+
     for temperatures in infiray_camera_source():
         y, x = temperatures.shape
 
@@ -26,6 +29,8 @@ def main():
 
         # find the brightest and dimmest pixel in temperatures and mark them too
         _min_val, _max_val, min_loc, max_loc = cv2.minMaxLoc(temperatures)
+        min_loc = filter_min_pos.update(min_loc)
+        max_loc = filter_max_pos.update(max_loc)
         draw_temperature_marker(show_image, max_loc[0], max_loc[1], temperatures, scale)
         draw_temperature_marker(show_image, min_loc[0], min_loc[1], temperatures, scale)
 
