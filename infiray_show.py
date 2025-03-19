@@ -2,6 +2,10 @@ import cv2
 import numpy as np
 import datetime
 
+
+print("InfiRay P2 Pro camera viewer single file example")
+
+
 # Initialize the webcam
 camera = cv2.VideoCapture(0)  # 0 is the default webcam index
 
