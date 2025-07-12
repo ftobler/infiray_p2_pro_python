@@ -5,6 +5,7 @@ import datetime
 from infiray_show.camera import infiray_camera_source
 from infiray_show.marker import draw_temperature_marker, LPF2D
 
+
 def main():
 
     filter_max_pos = LPF2D(0.3)
@@ -19,7 +20,7 @@ def main():
         # make image bigger for better visibility on screen
         scale = 4
         height = y * scale
-        width  = x * scale
+        width = x * scale
         show_image = cv2.resize(normalized_image, (width, height), interpolation=cv2.INTER_CUBIC)
         show_image = (show_image * 255).astype(np.uint8)
         show_image = cv2.applyColorMap(show_image, cv2.COLORMAP_MAGMA)  # apply colormap

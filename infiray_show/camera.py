@@ -19,9 +19,7 @@ def infiray_camera_source():
         # disable automatic YUY2->RGB conversion of OpenCV
         camera.set(cv2.CAP_PROP_CONVERT_RGB, 0)
 
-
         print("Press 'q' or 'ESC' to quit, 'ENTER' to save a screenshot")
-
 
         while True:
             # Capture frame-by-frame
