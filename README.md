@@ -1,6 +1,9 @@
 # InfiRay P2 Pro python viewer
 
 
+[![Build and Test](https://github.com/ftobler/infiray_p2_pro_python/actions/workflows/main.yml/badge.svg)](https://github.com/ftobler/infiray_p2_pro_python/actions/workflows/main.yml)
+
+
 This is a simple python example to view the termal camera module using opencv and numpy.
 
 
